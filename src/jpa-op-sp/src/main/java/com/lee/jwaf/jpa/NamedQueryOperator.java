@@ -31,10 +31,12 @@ public interface NamedQueryOperator {
      * Create Time: 2016-09-25 <br>
      * Create by : jimmyblylee@126.com <br>
      *
+     * @param <T> target class
      * @param queryName the query name
      * @param params the ordered parameter, these parameters will be put into the query one by one in number order.
      * @return a list of the results
      *
+     * @throws ClassCastException if the result is not the given type
      * @throws IllegalStateException if called for a Java Persistence query language UPDATE or DELETE statement
      * @throws QueryTimeoutException if the query execution exceeds the query timeout value set and only the statement
      *             is rolled back
@@ -44,17 +46,19 @@ public interface NamedQueryOperator {
      * @throws PersistenceException if the query execution exceeds the query timeout value set and the transaction is
      *             rolled back
      */
-    public List<?> queryByNamedQuery(String queryName, Object... params);
+    public <T> List<T> queryByNamedQuery(String queryName, Object... params);
 
     /**
      * Description : query list by given named query <br>
      * Create Time: 2016-09-25 <br>
      * Create by : jimmyblylee@126.com <br>
      *
+     * @param <T> target Class
      * @param queryName name of namedQuery
      * @param params {@link Param} list, and this will be set as the parameters into the query
      * @return a list of the results
      *
+     * @throws ClassCastException if the result is not the given type
      * @throws IllegalStateException if called for a Java Persistence query language UPDATE or DELETE statement
      * @throws QueryTimeoutException if the query execution exceeds the query timeout value set and only the statement
      *             is rolled back
@@ -64,19 +68,21 @@ public interface NamedQueryOperator {
      * @throws PersistenceException if the query execution exceeds the query timeout value set and the transaction is
      *             rolled back
      */
-    public List<?> queryByNamedQuery(String queryName, List<Param> params);
+    public <T> List<T> queryByNamedQuery(String queryName, List<Param> params);
 
     /**
      * Description : query list with given named query by page <br>
      * Create Time: 2016-09-25 <br>
      * Create by : jimmyblylee@126.com <br>
-     *
+     * 
+     * @param <T> target class
      * @param queryName name of namedQuery
      * @param start page start
      * @param limit if limit &lt; 0 then will set it with {@link Integer#MAX_VALUE}
      * @param params the ordered parameter, these parameters will be put into the query one by one in number order.
      * @return a list of the results
      *
+     * @throws ClassCastException if the result is not the given type
      * @throws IllegalArgumentException start &lt; 0
      * @throws IllegalStateException if called for a Java Persistence query language UPDATE or DELETE statement
      * @throws QueryTimeoutException if the query execution exceeds the query timeout value set and only the statement
@@ -87,19 +93,21 @@ public interface NamedQueryOperator {
      * @throws PersistenceException if the query execution exceeds the query timeout value set and the transaction is
      *             rolled back
      */
-    public List<?> queryByNamedQuery(String queryName, Integer start, Integer limit, Object... params);
+    public <T> List<T> queryByNamedQuery(String queryName, Integer start, Integer limit, Object... params);
 
     /**
      * Description : query list with given named query by page <br>
      * Create Time: 2016-09-25 <br>
      * Create by : jimmyblylee@126.com <br>
-     *
+     * 
+     * @param <T> target class
      * @param queryName query name
      * @param start paging start
      * @param limit if limit &lt; 0 then will set it with {@link Integer#MAX_VALUE}
      * @param params {@link Param} list, and this will be set as the parameters into the query
      * @return a list of the results
      *
+     * @throws ClassCastException if the result is not the given type
      * @throws IllegalArgumentException start &lt; 0
      * @throws IllegalStateException if called for a Java Persistence query language UPDATE or DELETE statement
      * @throws QueryTimeoutException if the query execution exceeds the query timeout value set and only the statement
@@ -110,7 +118,7 @@ public interface NamedQueryOperator {
      * @throws PersistenceException if the query execution exceeds the query timeout value set and the transaction is
      *             rolled back
      */
-    public List<?> queryByNamedQuery(String queryName, Integer start, Integer limit, List<Param> params);
+    public <T> List<T> queryByNamedQuery(String queryName, Integer start, Integer limit, List<Param> params);
 
     /**
      * Description : get count by a counting sql defined by named query <br>
@@ -161,10 +169,12 @@ public interface NamedQueryOperator {
      * Create Time: 2016-09-25 <br>
      * Create by : jimmyblylee@126.com <br>
      *
+     * @param <T> the target type you want
      * @param queryName name of namedQuery
      * @param params the ordered parameter, these parameters will be put into the query one by one in number order.
      * @return the result
      *
+     * @throws ClassCastException if the result is not the given type
      * @throws NoResultException if there is no result
      * @throws NonUniqueResultException if more than one result
      * @throws IllegalStateException if called for a Java Persistence query language UPDATE or DELETE statement
@@ -176,17 +186,19 @@ public interface NamedQueryOperator {
      * @throws PersistenceException if the query execution exceeds the query timeout value set and the transaction is
      *             rolled back
      */
-    public Object getSingleResultByNamedQuery(String queryName, Object... params);
+    public <T> T getSingleResultByNamedQuery(String queryName, Object... params);
 
     /**
      * Description : get sigle result by given named sql <br>
      * Create Time: 2016-09-25 <br>
      * Create by : jimmyblylee@126.com <br>
      *
+     * @param <T> the target type you want
      * @param queryName name of namedQuery
      * @param params {@link Param} list, and this will be set as the parameters into the query
      * @return the result
      *
+     * @throws ClassCastException if the result is not the given type
      * @throws NoResultException if there is no result
      * @throws NonUniqueResultException if more than one result
      * @throws IllegalStateException if called for a Java Persistence query language UPDATE or DELETE statement
@@ -198,7 +210,7 @@ public interface NamedQueryOperator {
      * @throws PersistenceException if the query execution exceeds the query timeout value set and the transaction is
      *             rolled back
      */
-    public Object getSingleResultByNamedQuery(String queryName, List<Param> params);
+    public <T> T getSingleResultByNamedQuery(String queryName, List<Param> params);
 
     /**
      * Description : Execute an update or delete statement. by named query <br>

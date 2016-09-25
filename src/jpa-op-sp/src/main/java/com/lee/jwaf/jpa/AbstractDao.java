@@ -52,8 +52,9 @@ public abstract class AbstractDao implements JpaOrmOperator, NamedQueryOperator 
      * (non-Javadoc)
      * @see com.lee.jwaf.jpa.NamedQueryOperator#queryByNamedQuery(java.lang.String, java.lang.Object[])
      */
+    @SuppressWarnings("unchecked")
     @Override
-    public List<?> queryByNamedQuery(String queryName, Object... params) {
+    public <T> List<T> queryByNamedQuery(String queryName, Object... params) {
         Assert.hasText(queryName, Msg.msg("jpa-support", "ERR_JPA_SUPPORT_002/AbstractDao.queryNameEmpty", null));
         return createNamedQuery(queryName, params).getResultList();
     }
@@ -62,8 +63,9 @@ public abstract class AbstractDao implements JpaOrmOperator, NamedQueryOperator 
      * (non-Javadoc)
      * @see com.lee.jwaf.jpa.NamedQueryOperator#queryByNamedQuery(java.lang.String, java.util.List)
      */
+    @SuppressWarnings("unchecked")
     @Override
-    public List<?> queryByNamedQuery(String queryName, List<Param> params) {
+    public <T> List<T> queryByNamedQuery(String queryName, List<Param> params) {
         Assert.hasText(queryName, Msg.msg("jpa-support", "ERR_JPA_SUPPORT_002/AbstractDao.queryNameEmpty", null));
         return createNamedQuery(queryName, params).getResultList();
     }
@@ -73,8 +75,9 @@ public abstract class AbstractDao implements JpaOrmOperator, NamedQueryOperator 
      * @see com.lee.jwaf.jpa.NamedQueryOperator#queryByNamedQuery(java.lang.String, java.lang.Integer,
      * java.lang.Integer, java.lang.Object[])
      */
+    @SuppressWarnings("unchecked")
     @Override
-    public List<?> queryByNamedQuery(String queryName, Integer start, Integer limit, Object... params) {
+    public <T> List<T> queryByNamedQuery(String queryName, Integer start, Integer limit, Object... params) {
         Assert.hasText(queryName, Msg.msg("jpa-support", "ERR_JPA_SUPPORT_002/AbstractDao.queryNameEmpty", null));
         Assert.isTrue(start < 0, Msg.msg("ERR_JPA_SUPPORT_002/AbstractDao.startShouldGreaterThanZero"));
         return createNamedQuery(queryName, params).setFirstResult(start)
@@ -86,8 +89,9 @@ public abstract class AbstractDao implements JpaOrmOperator, NamedQueryOperator 
      * @see com.lee.jwaf.jpa.NamedQueryOperator#queryByNamedQuery(java.lang.String, java.lang.Integer,
      * java.lang.Integer, java.util.List)
      */
+    @SuppressWarnings("unchecked")
     @Override
-    public List<?> queryByNamedQuery(String queryName, Integer start, Integer limit, List<Param> params) {
+    public <T> List<T> queryByNamedQuery(String queryName, Integer start, Integer limit, List<Param> params) {
         Assert.hasText(queryName, Msg.msg("jpa-support", "ERR_JPA_SUPPORT_002/AbstractDao.queryNameEmpty", null));
         Assert.isTrue(start < 0, Msg.msg("ERR_JPA_SUPPORT_002/AbstractDao.startShouldGreaterThanZero"));
         return createNamedQuery(queryName, params).setFirstResult(start)
@@ -118,20 +122,22 @@ public abstract class AbstractDao implements JpaOrmOperator, NamedQueryOperator 
      * (non-Javadoc)
      * @see com.lee.jwaf.jpa.NamedQueryOperator#getSingleResultByNamedQuery(java.lang.String, java.lang.Object[])
      */
+    @SuppressWarnings("unchecked")
     @Override
-    public Object getSingleResultByNamedQuery(String queryName, Object... params) {
+    public <T> T getSingleResultByNamedQuery(String queryName, Object... params) {
         Assert.hasText(queryName, Msg.msg("jpa-support", "ERR_JPA_SUPPORT_002/AbstractDao.queryNameEmpty", null));
-        return createNamedQuery(queryName, params).getSingleResult();
+        return (T) createNamedQuery(queryName, params).getSingleResult();
     }
 
     /*
      * (non-Javadoc)
      * @see com.lee.jwaf.jpa.NamedQueryOperator#getSingleResultByNamedQuery(java.lang.String, java.util.List)
      */
+    @SuppressWarnings("unchecked")
     @Override
-    public Object getSingleResultByNamedQuery(String queryName, List<Param> params) {
+    public <T> T getSingleResultByNamedQuery(String queryName, List<Param> params) {
         Assert.hasText(queryName, Msg.msg("jpa-support", "ERR_JPA_SUPPORT_002/AbstractDao.queryNameEmpty", null));
-        return createNamedQuery(queryName, params).getSingleResult();
+        return (T) createNamedQuery(queryName, params).getSingleResult();
     }
 
     /*
