@@ -8,6 +8,10 @@
  */
 package com.lee.jwaf.jpa;
 
+import javax.persistence.EntityExistsException;
+import javax.persistence.PersistenceException;
+import javax.persistence.TransactionRequiredException;
+
 /**
  * ClassName : JpaOrmOperator <br>
  * Description : JPA OR-Mapping entities operator <br>
@@ -37,6 +41,7 @@ public interface JpaOrmOperator {
      * Create Time: 2016-09-25 <br>
      * Create by : jimmyblylee@126.com <br>
      *
+     * @param <T> target class
      * @param entity entity instance
      * @return the managed instance that the state was merged to
      * @throws IllegalArgumentException if instance is not an entity or is a removed entity
@@ -63,6 +68,7 @@ public interface JpaOrmOperator {
      * Create Time: 2016-09-25 <br>
      * Create by : jimmyblylee@126.com <br>
      *
+     * @param <T> target class
      * @param entityClass entity class
      * @param primaryKey primary key
      * @return the found entity instance or null if the entity does not exist

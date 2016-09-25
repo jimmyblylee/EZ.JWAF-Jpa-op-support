@@ -51,7 +51,7 @@ public interface NamedQueryOperator {
      * Create Time: 2016-09-25 <br>
      * Create by : jimmyblylee@126.com <br>
      *
-     * @param queryName
+     * @param queryName name of namedQuery
      * @param params {@link Param} list, and this will be set as the parameters into the query
      * @return a list of the results
      *
@@ -71,13 +71,13 @@ public interface NamedQueryOperator {
      * Create Time: 2016-09-25 <br>
      * Create by : jimmyblylee@126.com <br>
      *
-     * @param queryName
-     * @param start
-     * @param limit if limit < 0 then will set it with {@link Integer#MAX_VALUE}
+     * @param queryName name of namedQuery
+     * @param start page start
+     * @param limit if limit &lt; 0 then will set it with {@link Integer#MAX_VALUE}
      * @param params the ordered parameter, these parameters will be put into the query one by one in number order.
      * @return a list of the results
      *
-     * @throws IllegalArgumentException start < 0
+     * @throws IllegalArgumentException start &lt; 0
      * @throws IllegalStateException if called for a Java Persistence query language UPDATE or DELETE statement
      * @throws QueryTimeoutException if the query execution exceeds the query timeout value set and only the statement
      *             is rolled back
@@ -96,11 +96,11 @@ public interface NamedQueryOperator {
      *
      * @param queryName query name
      * @param start paging start
-     * @param limit if limit < 0 then will set it with {@link Integer#MAX_VALUE}
+     * @param limit if limit &lt; 0 then will set it with {@link Integer#MAX_VALUE}
      * @param params {@link Param} list, and this will be set as the parameters into the query
      * @return a list of the results
      *
-     * @throws IllegalArgumentException start < 0
+     * @throws IllegalArgumentException start &lt; 0
      * @throws IllegalStateException if called for a Java Persistence query language UPDATE or DELETE statement
      * @throws QueryTimeoutException if the query execution exceeds the query timeout value set and only the statement
      *             is rolled back
@@ -117,7 +117,7 @@ public interface NamedQueryOperator {
      * Create Time: 2016-09-25 <br>
      * Create by : jimmyblylee@126.com <br>
      *
-     * @param queryName
+     * @param queryName name of namedQuery
      * @param params the ordered parameter, these parameters will be put into the query one by one in number order.
      * @return the result
      *
@@ -139,7 +139,7 @@ public interface NamedQueryOperator {
      * Create Time: 2016-09-25 <br>
      * Create by : jimmyblylee@126.com <br>
      *
-     * @param queryName
+     * @param queryName name of namedQuery
      * @param params {@link Param} list, and this will be set as the parameters into the query
      * @return the result
      *
@@ -161,7 +161,7 @@ public interface NamedQueryOperator {
      * Create Time: 2016-09-25 <br>
      * Create by : jimmyblylee@126.com <br>
      *
-     * @param queryName
+     * @param queryName name of namedQuery
      * @param params the ordered parameter, these parameters will be put into the query one by one in number order.
      * @return the result
      *
@@ -183,7 +183,7 @@ public interface NamedQueryOperator {
      * Create Time: 2016-09-25 <br>
      * Create by : jimmyblylee@126.com <br>
      *
-     * @param queryName
+     * @param queryName name of namedQuery
      * @param params {@link Param} list, and this will be set as the parameters into the query
      * @return the result
      *
@@ -205,7 +205,7 @@ public interface NamedQueryOperator {
      * Create Time: 2016-09-25 <br>
      * Create by : jimmyblylee@126.com <br>
      *
-     * @param queryName
+     * @param queryName name of namedQuery
      * @param params the ordered parameter, these parameters will be put into the query one by one in number order.
      * @return the number of entities updated or deleted
      *
@@ -224,7 +224,7 @@ public interface NamedQueryOperator {
      * Create Time: 2016-09-25 <br>
      * Create by : jimmyblylee@126.com <br>
      *
-     * @param queryName
+     * @param queryName name of namedQuery
      * @param params {@link Param} list, and this will be set as the parameters into the query
      * @return the number of entities updated or deleted
      *

@@ -36,7 +36,7 @@ public class Param implements Serializable {
     }
 
     /**
-     * Description : convert given params into list of {@link Parameter} <br>
+     * Description : convert given params into list of {@link Param} <br>
      * Create Time: 2016-09-23 <br>
      * Create by : jimmyblylee@126.com <br>
      *
