@@ -79,7 +79,7 @@ public abstract class AbstractDao implements JpaOrmOperator, NamedQueryOperator 
     @Override
     public <T> List<T> queryByNamedQuery(String queryName, Integer start, Integer limit, Object... params) {
         Assert.hasText(queryName, Msg.msg("jpa-support", "ERR_JPA_SUPPORT_002/AbstractDao.queryNameEmpty", null));
-        Assert.isTrue(start < 0, Msg.msg("ERR_JPA_SUPPORT_002/AbstractDao.startShouldGreaterThanZero"));
+        Assert.isTrue(start > -1, Msg.msg("ERR_JPA_SUPPORT_002/AbstractDao.startShouldGreaterThanZero"));
         return createNamedQuery(queryName, params).setFirstResult(start)
                 .setMaxResults(limit > 0 ? limit : Integer.MAX_VALUE).getResultList();
     }
@@ -93,7 +93,7 @@ public abstract class AbstractDao implements JpaOrmOperator, NamedQueryOperator 
     @Override
     public <T> List<T> queryByNamedQuery(String queryName, Integer start, Integer limit, List<Param> params) {
         Assert.hasText(queryName, Msg.msg("jpa-support", "ERR_JPA_SUPPORT_002/AbstractDao.queryNameEmpty", null));
-        Assert.isTrue(start < 0, Msg.msg("ERR_JPA_SUPPORT_002/AbstractDao.startShouldGreaterThanZero"));
+        Assert.isTrue(start > -1, Msg.msg("jpa-support", "ERR_JPA_SUPPORT_002/AbstractDao.startShouldGreaterThanZero", null));
         return createNamedQuery(queryName, params).setFirstResult(start)
                 .setMaxResults(limit > 0 ? limit : Integer.MAX_VALUE).getResultList();
     }
