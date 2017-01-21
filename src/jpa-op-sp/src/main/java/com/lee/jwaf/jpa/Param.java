@@ -1,4 +1,4 @@
-/**
+/*
  * Project Name : jwaf-jpa-op-sp <br>
  * File Name : Param.java <br>
  * Package Name : com.lee.jwaf.jpa <br>
@@ -23,6 +23,7 @@ import com.lee.util.StringUtils;
  * Create Time : 2016-09-23 <br>
  * Create by : jimmyblylee@126.com
  */
+@SuppressWarnings("unused")
 public class Param implements Serializable {
 
     private static final long serialVersionUID = -8649926204604667826L;
@@ -46,14 +47,14 @@ public class Param implements Serializable {
      */
     public static List<Param> toList(Object... objs) throws DaoException {
         if (objs == null || objs.length == 0 || objs.length % 2 == 1) {
-            String msgCode = "ERR_JPA_SUPPORT_001/Param.InlegalAruguments";
+            String msgCode = "ERR_JPA_SUPPORT_001/Param.IllegalArguments";
             String errCode = msgCode.substring(0, msgCode.indexOf("/"));
             throw new DaoException(errCode, Msg.msg("jpa-support", msgCode, null));
         } else {
             List<Param> params = new LinkedList<>();
             for (int i = 0; i < objs.length; i += 2) {
                 Object key = objs[i];
-                if (!(key instanceof String) && StringUtils.isEmpty(key)) {
+                if (!(key instanceof String) || StringUtils.isEmpty(key)) {
                     String msgCode = "ERR_JPA_SUPPORT_001/Param.IllegalParamKeys";
                     String errCode = msgCode.substring(0, msgCode.indexOf("/"));
                     throw new DaoException(errCode, Msg.msg("jpa-support", msgCode, null));
@@ -67,7 +68,7 @@ public class Param implements Serializable {
     /**
      * @return the name
      */
-    public String getName() {
+    String getName() {
         return name;
     }
 
@@ -81,14 +82,14 @@ public class Param implements Serializable {
     /**
      * @return the value
      */
-    public Object getValue() {
+    Object getValue() {
         return value;
     }
 
     /**
      * @param value the value to set
      */
-    public void setValue(Object value) {
+    void setValue(Object value) {
         this.value = value;
     }
 }

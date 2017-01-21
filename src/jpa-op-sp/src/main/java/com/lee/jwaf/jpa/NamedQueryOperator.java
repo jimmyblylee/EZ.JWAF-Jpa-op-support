@@ -1,4 +1,4 @@
-/**
+/*
  * Project Name : jwaf-jpa-op-sp <br>
  * File Name : NamedQueryOperator.java <br>
  * Package Name : com.lee.jwaf.jpa <br>
@@ -24,6 +24,7 @@ import javax.persistence.TransactionRequiredException;
  * Create Time : 2016-09-25 <br>
  * Create by : jimmyblylee@126.com
  */
+@SuppressWarnings("unused")
 public interface NamedQueryOperator {
 
     /**
@@ -46,7 +47,7 @@ public interface NamedQueryOperator {
      * @throws PersistenceException if the query execution exceeds the query timeout value set and the transaction is
      *             rolled back
      */
-    public <T> List<T> queryByNamedQuery(String queryName, Object... params);
+    <T> List<T> queryByNamedQuery(String queryName, Object... params);
 
     /**
      * Description : query list by given named query <br>
@@ -68,13 +69,13 @@ public interface NamedQueryOperator {
      * @throws PersistenceException if the query execution exceeds the query timeout value set and the transaction is
      *             rolled back
      */
-    public <T> List<T> queryByNamedQuery(String queryName, List<Param> params);
+    <T> List<T> queryByNamedQuery(String queryName, List<Param> params);
 
     /**
      * Description : query list with given named query by page <br>
      * Create Time: 2016-09-25 <br>
      * Create by : jimmyblylee@126.com <br>
-     * 
+     *
      * @param <T> target class
      * @param queryName name of namedQuery
      * @param start page start
@@ -93,13 +94,13 @@ public interface NamedQueryOperator {
      * @throws PersistenceException if the query execution exceeds the query timeout value set and the transaction is
      *             rolled back
      */
-    public <T> List<T> queryByNamedQuery(String queryName, Integer start, Integer limit, Object... params);
+    <T> List<T> queryByNamedQuery(String queryName, Integer start, Integer limit, Object... params);
 
     /**
      * Description : query list with given named query by page <br>
      * Create Time: 2016-09-25 <br>
      * Create by : jimmyblylee@126.com <br>
-     * 
+     *
      * @param <T> target class
      * @param queryName query name
      * @param start paging start
@@ -118,7 +119,7 @@ public interface NamedQueryOperator {
      * @throws PersistenceException if the query execution exceeds the query timeout value set and the transaction is
      *             rolled back
      */
-    public <T> List<T> queryByNamedQuery(String queryName, Integer start, Integer limit, List<Param> params);
+    <T> List<T> queryByNamedQuery(String queryName, Integer start, Integer limit, List<Param> params);
 
     /**
      * Description : get count by a counting sql defined by named query <br>
@@ -140,7 +141,7 @@ public interface NamedQueryOperator {
      * @throws PersistenceException if the query execution exceeds the query timeout value set and the transaction is
      *             rolled back
      */
-    public Integer getCountByNamedQuery(String queryName, Object... params);
+    Integer getCountByNamedQuery(String queryName, Object... params);
 
     /**
      * Description : get count by a counting sql defined by named query <br>
@@ -162,7 +163,7 @@ public interface NamedQueryOperator {
      * @throws PersistenceException if the query execution exceeds the query timeout value set and the transaction is
      *             rolled back
      */
-    public Integer getCountByNamedQuery(String queryName, List<Param> params);
+    Integer getCountByNamedQuery(String queryName, List<Param> params);
 
     /**
      * Description : get sigle result by given named sql <br>
@@ -186,7 +187,7 @@ public interface NamedQueryOperator {
      * @throws PersistenceException if the query execution exceeds the query timeout value set and the transaction is
      *             rolled back
      */
-    public <T> T getSingleResultByNamedQuery(String queryName, Object... params);
+    <T> T getSingleResultByNamedQuery(String queryName, Object... params);
 
     /**
      * Description : get sigle result by given named sql <br>
@@ -210,7 +211,7 @@ public interface NamedQueryOperator {
      * @throws PersistenceException if the query execution exceeds the query timeout value set and the transaction is
      *             rolled back
      */
-    public <T> T getSingleResultByNamedQuery(String queryName, List<Param> params);
+    <T> T getSingleResultByNamedQuery(String queryName, List<Param> params);
 
     /**
      * Description : Execute an update or delete statement. by named query <br>
@@ -229,7 +230,7 @@ public interface NamedQueryOperator {
      * @throws PersistenceException if the query execution exceeds the query timeout value set and the transaction is
      *             rolled back
      */
-    public Integer executeByNamedQuery(String queryName, Object... params);
+    Integer executeByNamedQuery(String queryName, Object... params);
 
     /**
      * Description : Execute an update or delete statement. by named query <br>
@@ -248,5 +249,5 @@ public interface NamedQueryOperator {
      * @throws PersistenceException if the query execution exceeds the query timeout value set and the transaction is
      *             rolled back
      */
-    public Integer executeByNamedQuery(String queryName, List<Param> params);
+    Integer executeByNamedQuery(String queryName, List<Param> params);
 }

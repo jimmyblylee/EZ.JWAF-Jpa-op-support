@@ -1,4 +1,4 @@
-/**
+/*
  * Project Name : jwaf-jpa-op-sp <br>
  * File Name : JpaOrmOperator.java <br>
  * Package Name : com.lee.jwaf.jpa <br>
@@ -18,6 +18,7 @@ import javax.persistence.TransactionRequiredException;
  * Create Time : 2016-09-25 <br>
  * Create by : jimmyblylee@126.com
  */
+@SuppressWarnings("unused")
 public interface JpaOrmOperator {
 
     /**
@@ -34,7 +35,7 @@ public interface JpaOrmOperator {
      * @throws TransactionRequiredException if invoked on a container-managed entity manager of type
      *             <code>PersistenceContextType.TRANSACTION</code> and there is no transaction
      */
-    public void persist(Object entity);
+    void persist(Object entity);
 
     /**
      * Description : Merge the state of the given entity into the current persistence context. <br>
@@ -48,7 +49,7 @@ public interface JpaOrmOperator {
      * @throws TransactionRequiredException if invoked on a container-managed entity manager of type
      *             <code>PersistenceContextType.TRANSACTION</code> and there is no transaction
      */
-    public <T> T merge(T entity);
+    <T> T merge(T entity);
 
     /**
      * Description : Remove the entity instance. <br>
@@ -60,7 +61,7 @@ public interface JpaOrmOperator {
      * @throws TransactionRequiredException if invoked on a container-managed entity manager of type
      *             <code>PersistenceContextType.TRANSACTION</code> and there is no transaction
      */
-    public void remove(Object entity);
+    void remove(Object entity);
 
     /**
      * Description : Find by primary key. Search for an entity of the specified class and primary key. If the entity
@@ -74,7 +75,7 @@ public interface JpaOrmOperator {
      * @return the found entity instance or null if the entity does not exist
      * @throws IllegalArgumentException if the entityClass or the primaryKey is null
      */
-    public <T> T find(Class<T> entityClass, Object primaryKey);
+    <T> T find(Class<T> entityClass, Object primaryKey);
 
     /**
      * Description : Check if the instance is a managed entity instance belonging to the current persistence context.
@@ -86,7 +87,7 @@ public interface JpaOrmOperator {
      * @return boolean indicating if entity is in persistence context
      * @throws IllegalArgumentException if not an entity
      */
-    public boolean contains(Object entity);
+    boolean contains(Object entity);
 
     /**
      * Description : Remove the given entity from the persistence context, causing a managed entity to become detached.
@@ -99,7 +100,7 @@ public interface JpaOrmOperator {
      * @throws IllegalArgumentException if the instance is not an entity
      * @since Java Persistence 2.0
      */
-    public void detach(Object entity);
+    void detach(Object entity);
 
     /**
      * Description : Synchronize the persistence context to the underlying database. <br>
@@ -109,7 +110,7 @@ public interface JpaOrmOperator {
      * @throws TransactionRequiredException if there is no transaction
      * @throws PersistenceException if the flush fails
      */
-    public void flush();
+    void flush();
 
     /**
      * Description : Clear the persistence context, causing all managed entities to become detached. Changes made to
@@ -117,5 +118,5 @@ public interface JpaOrmOperator {
      * Create Time: 2016-09-25 <br>
      * Create by : jimmyblylee@126.com <br>
      */
-    public void clear();
+    void clear();
 }

@@ -1,4 +1,4 @@
-/**
+/*
  * Project Name : jwaf-jpa-op-sp <br>
  * File Name : package-info.java <br>
  * Package Name : com.lee.jwaf.jpa <br>

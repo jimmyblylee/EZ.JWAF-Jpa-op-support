@@ -1,4 +1,4 @@
-/**
+/*
  * Project Name : jwaf-jpa-op-sp <br>
  * File Name : AbstractDao.java <br>
  * Package Name : com.lee.jwaf.jpa <br>
@@ -23,9 +23,10 @@ import com.lee.util.Assert;
  * Create Time : 2016-09-25 <br>
  * Create by : jimmyblylee@126.com
  */
+@SuppressWarnings("unused")
 public abstract class AbstractDao implements JpaOrmOperator, NamedQueryOperator {
 
-    protected abstract EntityManager em();
+    abstract EntityManager em();
 
     private Query createNamedQuery(String queryName, Object... params) {
         Query query = em().createNamedQuery(queryName);
