@@ -1,11 +1,22 @@
-/*
- * Project Name : jwaf-jpa-op-sp <br>
- * File Name : AbstractDao.java <br>
- * Package Name : com.lee.jwaf.jpa <br>
- * Create Time : 2016-09-25 <br>
- * Create by : jimmyblylee@126.com <br>
- * Copyright © 2006, 2016, Jimmybly Lee. All rights reserved.
- */
+/* ***************************************************************************
+ * EZ.JWAF/EZ.JCWAP: Easy series Production.
+ * Including JWAF(Java-based Web Application Framework)
+ * and JCWAP(Java-based Customized Web Application Platform).
+ * Copyright (C) 2016-2017 the original author or authors.
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of MIT License as published by
+ * the Free Software Foundation;
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the MIT License for more details.
+ *
+ * You should have received a copy of the MIT License along
+ * with this library; if not, write to the Free Software Foundation.
+ * ***************************************************************************/
+
 package com.lee.jwaf.jpa;
 
 import static com.lee.jwaf.message.Messages.Msg;
@@ -21,15 +32,24 @@ import com.lee.util.Assert;
  * ClassName : AbstractDao <br>
  * Description : AbstractDao provides ormapping operation support <br>
  * Create Time : 2016-09-25 <br>
- * Create by : jimmyblylee@126.com
+ * @author jimmyblylee@126.com
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "checkstyle:multiplestringliterals"})
 public abstract class AbstractDao implements JpaOrmOperator, NamedQueryOperator {
 
+    /**
+     * @return the EntityManager.
+     */
     abstract EntityManager em();
 
+    /**
+     * Create a named query.
+     * @param queryName the name of the namedQuery
+     * @param params params
+     * @return the JPA Query
+     */
     private Query createNamedQuery(String queryName, Object... params) {
-        Query query = em().createNamedQuery(queryName);
+        final Query query = em().createNamedQuery(queryName);
         if (params != null && params.length > 0) {
             int pos = 0;
             for (Object param : params) {
@@ -39,8 +59,14 @@ public abstract class AbstractDao implements JpaOrmOperator, NamedQueryOperator 
         return query;
     }
 
+    /**
+     * Create a named query.
+     * @param queryName the name of the named query
+     * @param params params by list of type {@link Param}
+     * @return the JPA Query
+     */
     private Query createNamedQuery(String queryName, List<Param> params) {
-        Query query = em().createNamedQuery(queryName);
+        final Query query = em().createNamedQuery(queryName);
         if (params != null && params.size() > 0) {
             for (Param param : params) {
                 query.setParameter(param.getName(), param.getValue());
@@ -94,7 +120,8 @@ public abstract class AbstractDao implements JpaOrmOperator, NamedQueryOperator 
     @Override
     public <T> List<T> queryByNamedQuery(String queryName, Integer start, Integer limit, List<Param> params) {
         Assert.hasText(queryName, Msg.msg("jpa-support", "ERR_JPA_SUPPORT_002/AbstractDao.queryNameEmpty", null));
-        Assert.isTrue(start > -1, Msg.msg("jpa-support", "ERR_JPA_SUPPORT_002/AbstractDao.startShouldGreaterThanZero", null));
+        Assert.isTrue(start > -1, Msg.msg("jpa-support",
+            "ERR_JPA_SUPPORT_002/AbstractDao.startShouldGreaterThanZero", null));
         return createNamedQuery(queryName, params).setFirstResult(start)
                 .setMaxResults(limit > 0 ? limit : Integer.MAX_VALUE).getResultList();
     }
