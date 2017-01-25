@@ -40,7 +40,8 @@ public abstract class AbstractDao implements JpaOrmOperator, NamedQueryOperator 
     /**
      * @return the EntityManager.
      */
-    abstract EntityManager em();
+    @SuppressWarnings("WeakerAccess")
+    protected abstract EntityManager em();
 
     /**
      * Create a named query.
